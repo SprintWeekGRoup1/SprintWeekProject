@@ -21,11 +21,16 @@ public class ChargingPig : EnemyController
         {
             playerInRange = true;
         }
+    }
+
+    private void FixedUpdate()
+    {
         if (playerInRange)
         {
             ChargeAtPlayer();
         }
     }
+
 
     protected virtual void ChargeAtPlayer()
     {
