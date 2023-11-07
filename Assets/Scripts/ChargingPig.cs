@@ -1,33 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class ChargingPig : EnemyController
 {
-    private bool animationPlayed;
-    private float animationDelay = 1.5f;
-    protected override void AttackPlayer()
+
+    [SerializeField] protected float playerClose = 11f;
+    [SerializeField] protected float chargeSpeed = 4f;
+
+    private bool playerInRange = false;
+    private float acceleration;
+
+    protected override void Update()
     {
-        if (!animationPlayed)
+        DestroyEnemy();
+        RangeFromPlayer();
+
+        if (distanceFromPlayer < playerClose)
         {
-            Debug.Log("Player charger animation!!!");
-            StartCoroutine(WaitForAnimationToPlay());
+            playerInRange = true;
         }
-        else
+        if (playerInRange)
         {
-            ChargeThePlayer();
+            ChargeAtPlayer();
         }
     }
 
-    IEnumerator WaitForAnimationToPlay()
+    protected virtual void ChargeAtPlayer()
     {
-        yield return new WaitForSeconds(animationDelay);
-        animationPlayed = true;
-    }
-
-    private void ChargeThePlayer()
-    {
-        moveSpeed += accelerate * Time.deltaTime;
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        Vector2 direction = new Vector2(-1f, 0f);
+        acceleration += Time.deltaTime;
+        rb2D.velocity = new Vector2(direction.x * chargeSpeed - acceleration, rb2D.velocity.y);
     }
 }

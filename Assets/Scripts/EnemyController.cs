@@ -3,45 +3,28 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public abstract class EnemyController : MonoBehaviour
 {
+
     [SerializeField] protected Transform playerPos;
     [SerializeField] protected GameObject mainCamera;
 
-    protected Vector3 direction = new Vector3(-1f, 0, 0);
-
-    protected float moveSpeed;
-    protected float startMoveSpeed = 2f;
-    protected float accelerate = 2f;
-    protected float playerClose = 11f;
     protected float cameraSize, cameraOffset = 2f;
-    protected bool playerInRange = false;
-
+    protected float distanceFromPlayer;
+    protected Rigidbody2D rb2D;
 
     protected virtual void Start()
     {
         cameraSize = mainCamera.GetComponent<Camera>().orthographicSize * 2;
-        moveSpeed = startMoveSpeed;
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void Update()
+    protected abstract void Update();
+
+    protected virtual void RangeFromPlayer()
     {
-        DestroyEnemy();
-
-        float distance = Vector3.Distance(transform.position, playerPos.position);
-
-        if (playerInRange)
-        {
-            AttackPlayer();
-        }
-
-        if (distance < playerClose)
-        {
-            playerInRange = true;
-        }
+        distanceFromPlayer = Vector3.Distance(transform.position, playerPos.position);
     }
-
-    protected virtual void AttackPlayer() { }
 
     protected void DestroyEnemy()
     {
