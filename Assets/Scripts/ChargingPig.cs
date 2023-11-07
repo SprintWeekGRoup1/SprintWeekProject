@@ -31,7 +31,6 @@ public class ChargingPig : EnemyController
         }
     }
 
-
     protected virtual void ChargeAtPlayer()
     {
         Vector2 direction = new Vector2(-1f, 0f);
