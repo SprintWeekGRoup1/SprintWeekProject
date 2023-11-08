@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class ChargingPig : EnemyController
 {
-
-    [SerializeField] protected float playerClose = 11f;
-    [SerializeField] protected float chargeSpeed = 4f;
+    [SerializeField] protected float playerClose;
+    [SerializeField] private float acceleration = 3f;
 
     private bool playerInRange = false;
-    private float acceleration;
+    private float direction = -1f;
 
     protected override void Update()
     {
@@ -33,8 +31,6 @@ public class ChargingPig : EnemyController
 
     protected virtual void ChargeAtPlayer()
     {
-        Vector2 direction = new Vector2(-1f, 0f);
-        acceleration += Time.deltaTime;
-        rb2D.velocity = new Vector2(direction.x * chargeSpeed - acceleration, rb2D.velocity.y);
+        rb2D.AddForce(new Vector2(direction * acceleration, 0), ForceMode2D.Force);
     }
 }
