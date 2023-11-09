@@ -218,8 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78685a6559e3d7540896261e0ebc154b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 15
-  JumpingPower: 20
+  Speed: 10
+  JumpingPower: 10
   detectGround: {fileID: 801075815}
   groundLayer:
     serializedVersion: 2
@@ -335,52 +335,8 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 8ffaf74b-c4ce-4285-ab38-674c3c0dbc10
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 46a273c7-71f6-4476-b92f-0aab28dcd096
     m_ActionName: Player/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0c3316b4-aa33-468f-828e-52644c357154
-    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: dda6b2af-15a6-4dee-9ad4-5012b1c4d3ec
-    m_ActionName: UI/Submit[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a7cbe858-98f7-4de7-96de-eeedb74297e4
-    m_ActionName: UI/Cancel[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d2181c68-863a-489a-a145-b8fd7dd71c37
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8e860b9f-5096-4667-a576-ef1635c105d9
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: adf8e76e-54ab-4437-8ce2-e9a82aab5726
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 127ad7b0-87de-4d44-99e2-a12af1560dfc
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: feb60b0f-5ff1-48f2-864b-603a298e29b6
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3a6c30d9-e062-4d32-922f-cf2017b57977
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4d9cddaf-a3e6-452a-844d-6efc5a4875cb
-    m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 208001505}
