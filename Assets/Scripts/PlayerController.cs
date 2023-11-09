@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float Speed = 10f;
     public float JumpingPower = 10f;
 
-    private float horizontal;
     private bool isFacingRight = true;
     private Rigidbody2D rb;
     private Vector2 movement = Vector2.zero;
@@ -26,17 +25,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpingPower);
         }
-
-        if (rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.6f);
-        }
     }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
     // Update is called once per frame
     void Update()
     {
