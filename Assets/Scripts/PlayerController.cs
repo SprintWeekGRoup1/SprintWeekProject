@@ -7,14 +7,31 @@ public class PlayerController : MonoBehaviour
 {
     public float Speed = 10f;
     public float JumpingPower = 10f;
-    public InputAction PlayerControls;
 
     private float horizontal;
     private bool isFacingRight = true;
     private Rigidbody2D rb;
+    private Vector2 movement = Vector2.zero;
 
     [SerializeField] private Transform detectGround;
     [SerializeField] private LayerMask groundLayer;
+
+    public void Move(InputAction.CallbackContext context) {
+        movement = context.ReadValue<Vector2>();
+    }
+
+    public void PlayerJump()
+    {
+        if (isGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, JumpingPower);
+        }
+
+        if (rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.6f);
+        }
+    }
 
     private void Start()
     {
@@ -23,29 +40,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-
-        if(Input.GetButtonDown("Jump") && isGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, JumpingPower);
-        }
-
-        if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.6f);
-        }
-
         Flip();
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
+        rb.velocity = new Vector2(movement.x * Speed, rb.velocity.y);
     }
 
     private void Flip()
     {
-        if(isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if(isFacingRight && movement.x < 0f || !isFacingRight && movement.x > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
