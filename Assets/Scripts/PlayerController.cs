@@ -1,24 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerControls : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float Speed = 10f;
     public float JumpingPower = 10f;
+    public InputAction PlayerControls;
 
     private float horizontal;
     private bool isFacingRight = true;
+    private Rigidbody2D rb;
 
-
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform detectGround;
     [SerializeField] private LayerMask groundLayer;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     // Update is called once per frame
     void Update()
     {
-        // Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        // transform.Translate(input * Speed * Time.deltaTime);
         horizontal = Input.GetAxis("Horizontal");
 
         if(Input.GetButtonDown("Jump") && isGrounded())
