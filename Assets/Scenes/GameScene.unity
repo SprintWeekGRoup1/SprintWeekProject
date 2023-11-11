@@ -380,6 +380,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6139637851769996989, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
   m_PrefabInstance: {fileID: 5483334241496996497}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &590239092
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1752800911}
+    m_Modifications:
+    - target: {fileID: 6139637851769996989, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139637851769996989, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 92.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139637851769996989, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139637851769996989, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139637851769996989, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739577741299691228, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739577741299691228, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Color.g
+      value: 0.16397393
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739577741299691228, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448341460327268300, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Name
+      value: GroundPlane (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+--- !u!4 &590239093 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6139637851769996989, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+  m_PrefabInstance: {fileID: 590239092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &601901976
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followedObject: {fileID: 1095252675}
-  maxPosition: 112
+  maxPosition: 224
   cameraSpeed: 10
 --- !u!1 &1095252675
 GameObject:
@@ -1686,6 +1740,7 @@ Transform:
   - {fileID: 1248614219}
   - {fileID: 278096239}
   - {fileID: 445309866}
+  - {fileID: 590239093}
   m_Father: {fileID: 2145230848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2028285520
