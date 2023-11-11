@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool pauseActive;
-    private bool isGrounded;
+    private bool isJumping;
     private float coyoteTimeCounter = 0f;
 
     private void Start()
@@ -31,6 +27,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(movement.x * Speed, rb.velocity.y);
+
+        if (IsGrounded())
+        {
+            isJumping = false;
+        }
     }
 
     void Update()
@@ -46,13 +47,34 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerJump()
     {
-        isGrounded = GroundedCheck();
-
-        if (isGrounded || coyoteTimeCounter > 0f)
+        if (IsGrounded() || coyoteTimeCounter > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpingPower);
+            isJumping = true;
+            coyoteTimeCounter = 0f;
         }
     }
+
+    // Lets the player jump after not touching ground for a a brief grace period
+    private void CoyoteTime()
+    {
+        if (!IsGrounded() && !isJumping)
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+            coyoteTimeCounter = Mathf.Max(coyoteTimeCounter, 0f);
+        }
+        else if (IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime; 
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        // this create a check to detect if the player is on the ground in order to allow the player to jump
+        return Physics2D.OverlapCircle(detectGround.position, 0.2f, groundLayer);
+    }
+
     public void PauseMenu()
     {
         if (!pauseActive)
@@ -76,25 +98,6 @@ public class PlayerController : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
-        }
-    }
-
-    private bool GroundedCheck()
-    {
-        // this create a check to detect if the player is on the ground in order to allow the player to jump
-        return Physics2D.OverlapCircle(detectGround.position, 0.2f, groundLayer);
-    }
-
-    // Let's the player jump after not touching ground for a a brief grace period
-    private void CoyoteTime()
-    {
-        if (!isGrounded)
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
-        else
-        {
-            coyoteTimeCounter = coyoteTime;
         }
     }
 }
