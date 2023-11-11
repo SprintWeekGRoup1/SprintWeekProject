@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
             pauseActive = false;
         }
     }
+
     private void Flip()
     {
         if (isFacingRight && movement.x < 0f || !isFacingRight && movement.x > 0f)
