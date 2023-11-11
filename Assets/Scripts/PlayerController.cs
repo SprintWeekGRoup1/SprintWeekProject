@@ -1,23 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Transform detectGround;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject pauseObj;
+    [SerializeField] private float coyoteTime;
+
     public float Speed = 10f;
     public float JumpingPower = 10f;
-
-    private bool isFacingRight = true;
-    private bool pauseActive;
 
     private Rigidbody2D rb;
     private Vector2 movement = Vector2.zero;
 
-    [SerializeField] private Transform detectGround;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private GameObject pauseObj;
-
+    private bool isFacingRight = true;
+    private bool pauseActive;
+    private bool isJumping = false;
 
     private void Start()
     {
@@ -41,11 +41,41 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerJump()
     {
-        if (isGrounded())
+        if (!isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpingPower);
+            isJumping = true;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (IsOnGroundLayer(other))
+        {
+            StopCoroutine(CoyoteTime());
+            isJumping = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (IsOnGroundLayer(other))
+        {
+            StartCoroutine(CoyoteTime());
+        }
+    }
+
+    private bool IsOnGroundLayer(Collider2D collider)
+    {
+        return (groundLayer.value & (1 << collider.gameObject.layer)) != 0;
+    }
+
+    private IEnumerator CoyoteTime()
+    {
+        yield return new WaitForSecondsRealtime(coyoteTime);
+        isJumping = true;
+    }
+
     public void PauseMenu()
     {
         if (!pauseActive)
@@ -61,6 +91,7 @@ public class PlayerController : MonoBehaviour
             pauseActive = false;
         }
     }
+
     private void Flip()
     {
         if (isFacingRight && movement.x < 0f || !isFacingRight && movement.x > 0f)
@@ -71,11 +102,4 @@ public class PlayerController : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-
-    private bool isGrounded()
-    {
-        // this create a check to detect if the player is on the ground in order to allow the player to jump
-        return Physics2D.OverlapCircle(detectGround.position, 0.2f, groundLayer);
-    }
-
 }
