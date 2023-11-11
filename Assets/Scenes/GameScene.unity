@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 161888947}
+  - component: {fileID: 161888948}
   m_Layer: 0
   m_Name: Ground_Detection
   m_TagString: Untagged
@@ -1155,13 +1156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78685a6559e3d7540896261e0ebc154b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  JumpingPower: 30
-  detectGround: {fileID: 161888947}
+  detectGround: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   pauseObj: {fileID: 601901976}
+  coyoteTime: 0
+  Speed: 10
+  JumpingPower: 30
 --- !u!114 &1095252681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1203,10 +1205,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 09b7181e-fec1-4f63-a279-7d2bd5497b5f
     m_ActionName: Player/Move[/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 46a273c7-71f6-4476-b92f-0aab28dcd096
-    m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1095252680}
@@ -2447,6 +2445,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6739577741299691228, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739577741299691228, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5298712
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739577741299691228, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739577741299691228, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448341460327268300, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_Name
+      value: GroundPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448341460327268300, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2463,6 +2485,10 @@ PrefabInstance:
     - target: {fileID: 989332779664426751, guid: c0f39cc40db778b40842d86164614b35, type: 3}
       propertyPath: m_Name
       value: Platform (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 989332779664426751, guid: c0f39cc40db778b40842d86164614b35, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4751052667450949913, guid: c0f39cc40db778b40842d86164614b35, type: 3}
       propertyPath: m_LocalScale.x
