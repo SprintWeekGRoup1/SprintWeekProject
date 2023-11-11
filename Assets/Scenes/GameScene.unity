@@ -986,6 +986,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   pauseObj: {fileID: 601901976}
+  coyoteTime: 0
   Speed: 10
   JumpingPower: 30
 --- !u!114 &1095252681
@@ -2094,7 +2095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7448341460327268300, guid: 2814ce6c2b832ba4ab6e7d5f9b6ad8fc, type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2115,7 +2116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 989332779664426751, guid: c0f39cc40db778b40842d86164614b35, type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4751052667450949913, guid: c0f39cc40db778b40842d86164614b35, type: 3}
       propertyPath: m_LocalScale.x

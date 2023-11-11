@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Ground"))
+        if (IsOnGroundLayer(other))
         {
             isJumping = false;
         }
@@ -58,14 +58,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Ground"))
+        if (IsOnGroundLayer(other))
         {
             StartCoroutine(CoyoteTime());
         }
     }
+
+    private bool IsOnGroundLayer(Collider2D collider)
+    {
+        return (groundLayer.value & (1 << collider.gameObject.layer)) != 0;
+    }
+
     private IEnumerator CoyoteTime()
     {
-
         yield return new WaitForSecondsRealtime(coyoteTime);
         isJumping = true;
     }
