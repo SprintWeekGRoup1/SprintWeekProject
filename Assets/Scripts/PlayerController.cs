@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool pauseActive;
-    private bool isJumping;
     private float coyoteTimeCounter = 0f;
 
     private void Start()
@@ -27,11 +26,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(movement.x * Speed, rb.velocity.y);
-
-        if (IsGrounded())
-        {
-            isJumping = false;
-        }
     }
 
     void Update()
@@ -47,10 +41,9 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerJump()
     {
-        if (IsGrounded() || coyoteTimeCounter > 0f)
+        if (IsGrounded() || coyoteTimeCounter > coyoteTime)
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpingPower);
-            isJumping = true;
             coyoteTimeCounter = 0f;
         }
     }
@@ -58,14 +51,9 @@ public class PlayerController : MonoBehaviour
     // Lets the player jump after not touching ground for a a brief grace period
     private void CoyoteTime()
     {
-        if (!IsGrounded() && !isJumping)
+        if (IsGrounded())
         {
-            coyoteTimeCounter -= Time.deltaTime;
-            coyoteTimeCounter = Mathf.Max(coyoteTimeCounter, 0f);
-        }
-        else if (IsGrounded())
-        {
-            coyoteTimeCounter = coyoteTime; 
+            coyoteTimeCounter += Time.deltaTime;
         }
     }
 
