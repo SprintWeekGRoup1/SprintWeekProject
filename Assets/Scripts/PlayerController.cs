@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool pauseActive;
-    private float coyoteTimeCounter = 0f;
+    private bool isJumping = false;
 
     private void Start()
     {
@@ -31,7 +32,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Flip();
-        CoyoteTime();
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -41,26 +41,33 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerJump()
     {
-        if (IsGrounded() || coyoteTimeCounter > coyoteTime)
+        if (!isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, JumpingPower);
-            coyoteTimeCounter = 0f;
+            isJumping = true;
         }
     }
 
-    // Lets the player jump after not touching ground for a a brief grace period
-    private void CoyoteTime()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsGrounded())
+        if (other.CompareTag("Ground"))
         {
-            coyoteTimeCounter += Time.deltaTime;
+            isJumping = false;
         }
     }
 
-    private bool IsGrounded()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        // this create a check to detect if the player is on the ground in order to allow the player to jump
-        return Physics2D.OverlapCircle(detectGround.position, 0.2f, groundLayer);
+        if (other.CompareTag("Ground"))
+        {
+            StartCoroutine(CoyoteTime());
+        }
+    }
+    private IEnumerator CoyoteTime()
+    {
+
+        yield return new WaitForSecondsRealtime(coyoteTime);
+        isJumping = true;
     }
 
     public void PauseMenu()
