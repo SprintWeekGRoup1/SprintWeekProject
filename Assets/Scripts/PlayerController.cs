@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         if (IsOnGroundLayer(other))
         {
+            StopCoroutine(CoyoteTime());
             isJumping = false;
         }
     }
