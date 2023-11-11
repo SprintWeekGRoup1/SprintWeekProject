@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Transform detectGround;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject pauseObj;
     [SerializeField] private float coyoteTime;
