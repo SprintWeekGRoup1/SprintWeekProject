@@ -921,13 +921,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78685a6559e3d7540896261e0ebc154b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  JumpingPower: 30
   detectGround: {fileID: 161888947}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   pauseObj: {fileID: 601901976}
+  coyoteTime: 0.2
+  Speed: 10
+  JumpingPower: 30
 --- !u!114 &1095252681
 MonoBehaviour:
   m_ObjectHideFlags: 0
