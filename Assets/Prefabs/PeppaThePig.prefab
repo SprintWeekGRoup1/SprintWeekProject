@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7121964215901403241}
   - component: {fileID: -5339183569100496826}
   - component: {fileID: 5533927671300541706}
+  - component: {fileID: -2439482570846238559}
   m_Layer: 7
   m_Name: PeppaThePig
   m_TagString: Untagged
@@ -176,3 +177,17 @@ MonoBehaviour:
   direction: -1
   playerClose: 12
   acceleration: 15
+--- !u!114 &-2439482570846238559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901190847515095529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77149b32136b9bd419a4dad18fc8f25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  damage: 1

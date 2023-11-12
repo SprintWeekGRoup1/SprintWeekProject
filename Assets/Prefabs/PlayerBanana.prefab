@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 83056157175460375}
   - component: {fileID: 8396548425628604096}
   - component: {fileID: 5905036046623652956}
+  - component: {fileID: 5069171192552731733}
   m_Layer: 0
   m_Name: PlayerBanana
   m_TagString: Player
@@ -248,6 +249,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 7.126666, y: 10.990521}
   m_Direction: 0
+--- !u!114 &5069171192552731733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162784210102229600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff682cd1f3204c545bb788b9fe1dfb98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  playerHealthSpan: 3
 --- !u!1 &5216595491820936556
 GameObject:
   m_ObjectHideFlags: 0
