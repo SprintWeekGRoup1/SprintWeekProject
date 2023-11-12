@@ -1,4 +1,6 @@
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject pauseObj;
+    [SerializeField] private GameObject WinObj;
     [SerializeField] private float coyoteTime;
 
     public float Speed = 10f;
@@ -53,6 +56,12 @@ public class PlayerController : MonoBehaviour
         {
             StopCoroutine(CoyoteTime());
             isJumping = false;
+        }
+
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            WinObj.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
