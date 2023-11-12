@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11090610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6901190847515095529, guid: 130689792e024cc42b7cf5a0f52026d2, type: 3}
+  m_PrefabInstance: {fileID: 1705839430641373388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &161888946
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,10 +857,11 @@ GameObject:
   - component: {fileID: 1095252677}
   - component: {fileID: 1095252681}
   - component: {fileID: 1095252680}
+  - component: {fileID: 1095252683}
   - component: {fileID: 1095252682}
   m_Layer: 0
   m_Name: PlayerBanana
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1088,6 +1094,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 7.126666, y: 10.990521}
   m_Direction: 0
+--- !u!114 &1095252683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095252675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff682cd1f3204c545bb788b9fe1dfb98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  playerHealthSpan: 3
 --- !u!1 &1245419975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,13 +2016,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6901190847515095529, guid: 130689792e024cc42b7cf5a0f52026d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1705839430641373394}
   m_SourcePrefab: {fileID: 100100000, guid: 130689792e024cc42b7cf5a0f52026d2, type: 3}
 --- !u!4 &1705839430641373389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8382950515292388066, guid: 130689792e024cc42b7cf5a0f52026d2, type: 3}
   m_PrefabInstance: {fileID: 1705839430641373388}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705839430641373394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11090610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77149b32136b9bd419a4dad18fc8f25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1095252683}
+  damage: 1
 --- !u!1001 &5483334241496996497
 PrefabInstance:
   m_ObjectHideFlags: 0
