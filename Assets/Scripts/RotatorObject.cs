@@ -13,8 +13,10 @@ public class RotatorObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // kill or damage player here
-        Destroy(collision.gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (collision.CompareTag("Player"))
+        {
+            // kill or damage player here
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
