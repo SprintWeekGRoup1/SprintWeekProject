@@ -2472,6 +2472,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 925113185}
     m_Modifications:
     - target: {fileID: 5533927671300541706, guid: 130689792e024cc42b7cf5a0f52026d2, type: 3}
+      propertyPath: direction
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5533927671300541706, guid: 130689792e024cc42b7cf5a0f52026d2, type: 3}
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 1095252679}

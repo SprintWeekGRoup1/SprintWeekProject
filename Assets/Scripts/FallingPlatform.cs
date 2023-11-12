@@ -19,7 +19,6 @@ public class FallingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(PlatformFallDown());
-            StartCoroutine(PlatformDestroy());
         }
     }
 
@@ -28,6 +27,7 @@ public class FallingPlatform : MonoBehaviour
         yield return new WaitForSecondsRealtime(fallDelay);
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = fallGravity;
+        StartCoroutine(PlatformDestroy());
     }
 
     private IEnumerator PlatformDestroy()

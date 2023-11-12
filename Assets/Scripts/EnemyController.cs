@@ -19,7 +19,7 @@ public abstract class EnemyController : MonoBehaviour
         if (direction > 0f)
         {
             Vector3 newLocalScale = transform.localScale;
-            newLocalScale.x *= -direction;
+            newLocalScale.x *= -1f;
             transform.localScale = newLocalScale;
         }
     }
