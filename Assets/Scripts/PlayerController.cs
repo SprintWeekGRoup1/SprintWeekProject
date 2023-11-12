@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (IsOnGroundLayer(other) && gameObject != null && other != null)
+        if (IsOnGroundLayer(other) && gameObject.activeInHierarchy)
         {
             StartCoroutine(CoyoteTime());
         }
