@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Transform detectGround;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject pauseObj;
     [SerializeField] private float coyoteTime;
@@ -17,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool pauseActive;
-    private bool isJumping = false;
+    private bool isJumping;
 
     private void Start()
     {
@@ -59,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (IsOnGroundLayer(other))
+        if (IsOnGroundLayer(other) && gameObject.activeInHierarchy)
         {
             StartCoroutine(CoyoteTime());
         }
