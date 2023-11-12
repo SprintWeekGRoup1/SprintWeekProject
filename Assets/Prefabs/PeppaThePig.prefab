@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7121964215901403241}
   - component: {fileID: -5339183569100496826}
   - component: {fileID: 5533927671300541706}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PeppaThePig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

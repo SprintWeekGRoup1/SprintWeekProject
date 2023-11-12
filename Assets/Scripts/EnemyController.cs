@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class EnemyController : MonoBehaviour
@@ -8,6 +5,7 @@ public abstract class EnemyController : MonoBehaviour
 
     [SerializeField] protected Transform playerPos;
     [SerializeField] protected GameObject mainCamera;
+    [SerializeField] protected float direction;
 
     protected float cameraSize, cameraOffset = 2f;
     protected float distanceFromPlayer;
@@ -17,6 +15,13 @@ public abstract class EnemyController : MonoBehaviour
     {
         cameraSize = mainCamera.GetComponent<Camera>().orthographicSize * 2;
         rb2D = GetComponent<Rigidbody2D>();
+
+        if (direction > 0f)
+        {
+            Vector3 newLocalScale = transform.localScale;
+            newLocalScale.x *= -direction;
+            transform.localScale = newLocalScale;
+        }
     }
 
     protected abstract void Update();
