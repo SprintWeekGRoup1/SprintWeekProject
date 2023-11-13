@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     {
         var currentPos = transform.position;
 
-        if(followedObject.transform.position.x > currentPos.x)
+        if(followedObject != null && followedObject.transform.position.x > currentPos.x)
         {
             if(currentPos.x + size < maxPosition)
             {
