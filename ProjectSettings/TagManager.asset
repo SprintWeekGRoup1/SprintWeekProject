@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CrusherBox
+  - CrusherCube
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -41,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obstacle
+    uniqueID: 621840205
     locked: 0
