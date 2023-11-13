@@ -10,16 +10,9 @@ public class KillPlayer : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Die();
+            Destroy(collision);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-
-    private void Die()
-    {
-        Debug.Log("The player dies");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
- 
 }
 
