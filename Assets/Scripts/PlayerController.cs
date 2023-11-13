@@ -1,8 +1,7 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public float Speed = 10f;
     public float JumpingPower = 10f;
+    public float fallDownDistance = -65f;
 
     private Rigidbody2D rb;
     private Vector2 movement = Vector2.zero;
@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Flip();
+
+        if (gameObject.transform.position.y < fallDownDistance)
+        {
+            DiedFromFall();
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -61,7 +66,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Finish"))
         {
             WinObj.SetActive(true);
-            Time.timeScale = 0;
+            Invoke("RestartGame", 5f);
         }
     }
 
@@ -83,6 +88,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(coyoteTime);
         isJumping = true;
     }
+
 
     public void PauseMenu()
     {
@@ -110,4 +116,15 @@ public class PlayerController : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    private void DiedFromFall()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
