@@ -12,22 +12,21 @@ public class KillPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag ("CrusherCube")) 
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("This is OnCollisionEnter2D");
             Die();
         }
     }
 
-    private void Die() 
+    private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
     }
 
-    private void RestartLevel() 
+    private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
