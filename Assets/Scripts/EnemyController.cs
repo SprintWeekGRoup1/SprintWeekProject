@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public abstract class EnemyController : MonoBehaviour
 {
@@ -34,7 +35,10 @@ public abstract class EnemyController : MonoBehaviour
 
     protected virtual void RangeFromPlayer()
     {
-        distanceFromPlayer = Vector3.Distance(transform.position, playerPos.position);
+        if (playerPos != null)
+        {
+            distanceFromPlayer = Vector3.Distance(transform.position, playerPos.position);
+        }
     }
 
     protected void DestroyEnemy()
