@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class KillPlayer : MonoBehaviour
+// Example script attached to the Crusher Cube
+public class CrusherCube : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
@@ -14,21 +15,23 @@ public class KillPlayer : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag ("CrusherCube")) 
+        
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("This is OnCollisionEnter2D");
+            Debug.Log("This is OnCollissionEnter2D");
             Die();
         }
     }
 
-    private void Die() 
+    private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
     }
 
-    private void RestartLevel() 
+    private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
+
