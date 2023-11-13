@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public abstract class EnemyController : MonoBehaviour
 {
+    public int damage = 1;
 
     [SerializeField] protected Transform playerPos;
     [SerializeField] protected GameObject mainCamera;
@@ -11,10 +13,15 @@ public abstract class EnemyController : MonoBehaviour
     protected float distanceFromPlayer;
     protected Rigidbody2D rb2D;
 
+    private PlayerHealth playerHealth;
+
     protected virtual void Start()
     {
         cameraSize = mainCamera.GetComponent<Camera>().orthographicSize * 2;
         rb2D = GetComponent<Rigidbody2D>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
 
         if (direction > 0f)
         {
@@ -28,7 +35,10 @@ public abstract class EnemyController : MonoBehaviour
 
     protected virtual void RangeFromPlayer()
     {
-        distanceFromPlayer = Vector3.Distance(transform.position, playerPos.position);
+        if (playerPos != null)
+        {
+            distanceFromPlayer = Vector3.Distance(transform.position, playerPos.position);
+        }
     }
 
     protected void DestroyEnemy()
@@ -36,6 +46,14 @@ public abstract class EnemyController : MonoBehaviour
         if (transform.position.x < mainCamera.transform.position.x - (cameraSize + cameraOffset))
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerHealth.TakeDamage(damage);
         }
     }
 

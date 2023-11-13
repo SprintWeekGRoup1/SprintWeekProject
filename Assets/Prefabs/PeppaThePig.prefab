@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ccc1ebd23c00a4fbe74d864c749bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 3
   playerPos: {fileID: 0}
   mainCamera: {fileID: 0}
   direction: -1
